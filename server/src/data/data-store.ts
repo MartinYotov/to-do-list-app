@@ -1,3 +1,3 @@
-import { IToDo } from '../../../shared/data-types';
+import { IToDoTask } from '../../../shared/data-types';
 
-export const toDosMap = new Map<string, IToDo>();
+export const toDoTasksMap: Map<string, IToDoTask> = new Map<string, IToDoTask>();

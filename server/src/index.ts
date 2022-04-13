@@ -1,9 +1,14 @@
 import express, { Application, Request, Response } from 'express';
+import { notFound } from './helpers/error-helpers';
+import toDoTasksRouter from './routes/todo-tasks';
 
 const app: Application = express();
 
+app.use([express.json()]);
+app.use('/api/todo-tasks', toDoTasksRouter);
+
 app.all('*', (req: Request, res: Response) => {    
-    return res.status(404).send('Response');
+    return notFound(res, 'request route not found!');
 })
 
 const port = 5000;
