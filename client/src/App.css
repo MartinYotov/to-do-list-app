@@ -1,0 +1,75 @@
+#main {
+  width: 50%;
+  min-width: 400px;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+#main h4 {
+  text-transform: uppercase;
+}
+
+.to-do-task {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+}
+
+.to-do-task:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.to-do-task.completed input.task-text {
+  text-decoration: line-through;
+}
+
+input.task-checkbox {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+input.task-text {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  font-size: 1em;
+  outline: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.delete-task {
+  width: 25px;
+  height: 25px;
+  border: none;
+  background-color: #c8c8c8;
+  padding-bottom: 5px;
+  margin-left: 5px;
+}
+
+#done {
+  font-weight: 600;
+  font-size: 1.3em;
+  text-transform: uppercase;
+}
+
+#addToDo {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+}
+
+#addInput {
+  flex-grow: 1;
+}
+
+#addBtn {
+  width: 120px;
+  margin-left: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
