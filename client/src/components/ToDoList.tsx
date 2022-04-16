@@ -3,18 +3,23 @@ import ToDo from './ToDo';
 import { IToDoTask } from '../../../shared/data-types';
 import { ServiceContext } from '../App';
 import { IToDoService } from '../services/todo-service';
+import { useDispatch, useSelector } from 'react-redux';
+import { ToDoAppState } from '../redux/reducers';
+import { createSetToDoTasksAction } from '../redux/actions';
 
 const ToDoList = () => {
     const toDoService: IToDoService = useContext<IToDoService>(ServiceContext);
-    const [toDoTasks, setToDoTasks] = useState<IToDoTask[]>([]);
+    const toDoTasks: IToDoTask[] = useSelector((state: ToDoAppState) => Array.from(state.toDoTasksList.values()));
+    const dispatch = useDispatch();
 
     const getToDoTasks = useCallback(async () => {
         toDoService.getToDoTasks()
         .then(res => {
-            setToDoTasks(res.data);
+            dispatch(createSetToDoTasksAction(res.data));
+
         })
         .catch(err => alert(err.response.data)) 
-    }, [toDoService]);
+    }, [toDoService, dispatch]);
 
     useEffect(() => {
         getToDoTasks();
@@ -23,7 +28,11 @@ const ToDoList = () => {
     return (
       <div id="toDoList">
         <hr />
-        { toDoTasks.map(toDo => <ToDo key={toDo.id} {...toDo} />) }
+        { 
+            toDoTasks.length ? 
+            toDoTasks.map(toDo => <ToDo key={toDo.id} {...toDo} />) :
+            <p>You don't have any tasks yet.</p>
+        }                    
         <hr />
         <div id="done">
           Done:
