@@ -1,10 +1,12 @@
 import express, { Application, Request, Response } from 'express';
+import cors from 'cors';
+
 import { notFound } from './helpers/error-helpers';
 import toDoTasksRouter from './routes/todo-tasks';
 
 const app: Application = express();
 
-app.use([express.json()]);
+app.use([express.json(), cors()]);
 app.use('/api/todo-tasks', toDoTasksRouter);
 
 app.all('*', (req: Request, res: Response) => {    

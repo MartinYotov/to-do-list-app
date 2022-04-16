@@ -7,7 +7,3 @@ export interface IToDoTask {
 export interface INewToDoTaskInfo {
     text: string;
 }
-
-export interface IDeleteToDoTaskInfo {
-    id: string;
-}

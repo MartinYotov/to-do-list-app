@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { IToDoTask, INewToDoTaskInfo, IDeleteToDoTaskInfo } from '../../../shared/data-types';
+import { IToDoTask, INewToDoTaskInfo } from '../../../shared/data-types';
 import { toDoTasksMap } from '../data/data-store';
 import { v4 as uuidv4 } from 'uuid';
 import { badRequest, notFound } from '../helpers/error-helpers';
@@ -29,10 +29,11 @@ const addToDoTask = (req: Request, res: Response): Response<IToDoTask> => {
 }
 
 const editToDoTask = (req: Request, res: Response): Response<IToDoTask> => {
-    const { id, text, completed }: IToDoTask = req.body;
+    const id = req.params.id;
+    const { text, completed }: IToDoTask = req.body;
 
     if (!id) {
-        return badRequest(res, 'ToDoTask id is required!');
+        return badRequest(res, 'ToDo task id is required in url!');
     }
 
     const toDoTaskToEdit = toDoTasksMap.get(id);
@@ -52,7 +53,7 @@ const editToDoTask = (req: Request, res: Response): Response<IToDoTask> => {
 } 
 
 const deleteToDoTask = (req: Request, res: Response): Response<IToDoTask> => {
-    const { id }: IDeleteToDoTaskInfo = req.body;
+    const id: string = req.params.id;
 
     if (!id) {
         return badRequest(res, 'ToDoTask id is required!');
