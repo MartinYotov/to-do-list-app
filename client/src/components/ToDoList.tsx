@@ -4,12 +4,13 @@ import { IToDoTask } from '../../../shared/data-types';
 import { ServiceContext } from '../App';
 import { IToDoService } from '../services/todo-service';
 import { useDispatch, useSelector } from 'react-redux';
-import { ToDoAppState } from '../redux/reducers';
 import { createSetToDoTasksAction } from '../redux/actions';
+import { getDoneCount, getToDoTasksByFilter } from '../redux/selectors';
 
 const ToDoList = () => {
     const toDoService: IToDoService = useContext<IToDoService>(ServiceContext);
-    const toDoTasks: IToDoTask[] = useSelector((state: ToDoAppState) => Array.from(state.toDoTasksList.values()));
+    const toDoTasks: IToDoTask[] = useSelector(getToDoTasksByFilter);
+    const doneCount: number = useSelector(getDoneCount);
     const dispatch = useDispatch();
 
     const getToDoTasks = useCallback(async () => {
@@ -34,12 +35,7 @@ const ToDoList = () => {
         }                    
         <hr />
         <div id="done">
-          Done:
-            { 
-              toDoTasks.reduce((count: number, toDo: IToDoTask) => {
-                  return count + (toDo.completed ? 1 : 0)
-              }, 0)
-            }
+          <span>Done: </span> {doneCount}
         </div>
           
       </div>

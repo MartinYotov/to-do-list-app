@@ -1,5 +1,5 @@
 import { Action as ReduxAction } from "redux";
-import { IToDoTask } from "../../../shared/data-types";
+import { IToDoTask } from "../../../../shared/data-types";
 import { Map } from "immutable";
 import { 
     Action, 
@@ -10,18 +10,18 @@ import {
     EditToDoTaskCompletedAction, 
     EditToDoTaskTextAction, 
     SetToDoTasksAction 
-} from "./actions";
+} from "../actions";
 
 
-export type ToDoAppState = {
+export type ToDoState = {
     toDoTasksList: Map<string, IToDoTask>;
 }
 
-export const defaultState: ToDoAppState = {
+const defaultState: ToDoState = {
     toDoTasksList: Map<string, IToDoTask>()
 }
 
-export const toDoReducer = (state: ToDoAppState = defaultState, action: ReduxAction<Action>): ToDoAppState => {
+export const toDoReducer = (state: ToDoState = defaultState, action: ReduxAction<Action>): ToDoState => {
     switch(action.type) {
         case Action.SetToDoTasks: {
             const toDoTasks: IToDoTask[] = (action as SetToDoTasksAction).payload;            

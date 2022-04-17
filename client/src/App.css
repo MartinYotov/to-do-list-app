@@ -9,6 +9,17 @@
   text-transform: uppercase;
 }
 
+#filter {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  margin-top: 25px;
+}
+
+#filter span {
+  margin-right: 20px;
+}
+
 .to-do-task {
   width: 80%;
   margin: auto;

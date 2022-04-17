@@ -7,6 +7,7 @@ export enum Action {
     EditToDoTaskText,
     EditToDoTaskCompleted,
     DeleteToDoTask,
+    UpdateFilter
 }
 
 export type SetToDoTasksAction = ReduxAction<Action.SetToDoTasks> & { payload: IToDoTask[] }
@@ -42,4 +43,12 @@ export type DeleteToDoTaskAction = ReduxAction<Action.DeleteToDoTask> & { payloa
 
 export const createDeleteToDoTaskAction = (id: string): DeleteToDoTaskAction => {
     return { type: Action.DeleteToDoTask, payload: id }
+}
+
+
+export enum FilterOption { All, Completed, NotCompleted }
+export type UpdateFilterAction = ReduxAction<Action.UpdateFilter> & { payload: FilterOption }
+
+export const createUpdateFilterAction = (filterOption: FilterOption): UpdateFilterAction => {
+    return { type: Action.UpdateFilter, payload: filterOption }
 }
