@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import ToDo from './ToDo';
 import { IToDoTask } from '../../../shared/data-types';
 import { ServiceContext } from '../App';
@@ -16,9 +16,8 @@ const ToDoList = () => {
         toDoService.getToDoTasks()
         .then(res => {
             dispatch(createSetToDoTasksAction(res.data));
-
         })
-        .catch(err => alert(err.response.data)) 
+        .catch(err => alert(err.response.data.error));
     }, [toDoService, dispatch]);
 
     useEffect(() => {
