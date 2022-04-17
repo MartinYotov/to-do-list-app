@@ -1,6 +1,5 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
-
 import { notFound } from './helpers/error-helpers';
 import toDoTasksRouter from './routes/todo-tasks';
 

@@ -1,9 +1,9 @@
 import React, { useCallback, useContext, useEffect } from 'react';
-import ToDo from './ToDo';
+import { useDispatch, useSelector } from 'react-redux';
 import { IToDoTask } from '../../../shared/data-types';
+import ToDo from './ToDo';
 import { ServiceContext } from '../App';
 import { IToDoService } from '../services/todo-service';
-import { useDispatch, useSelector } from 'react-redux';
 import { createSetToDoTasksAction } from '../redux/actions';
 import { getDoneCount, getToDoTasksByFilter } from '../redux/selectors';
 

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
+import { v4 as uuidv4 } from 'uuid';
 import { IToDoTask, INewToDoTaskInfo } from '../../../shared/data-types';
 import { toDoTasksMap } from '../data/data-store';
-import { v4 as uuidv4 } from 'uuid';
 import { badRequest, notFound } from '../helpers/error-helpers';
 
 const getToDoTasks = (req: Request, res: Response): Response<IToDoTask[]> => {

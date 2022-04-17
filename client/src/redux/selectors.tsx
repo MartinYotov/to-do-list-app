@@ -11,8 +11,8 @@ export const getToDoTasksByFilter = (state: AppState): IToDoTask[] => {
 
     switch (state.filter.filterOption) {
         case FilterOption.All: return toDoTasks;
-        case FilterOption.Completed: return toDoTasks.filter(task => task.completed);
-        case FilterOption.NotCompleted: return toDoTasks.filter(task => !task.completed);
+        case FilterOption.Completed: return toDoTasks.filter((task: IToDoTask) => task.completed);
+        case FilterOption.NotCompleted: return toDoTasks.filter((task: IToDoTask) => !task.completed);
     }
 }
 

@@ -1,6 +1,6 @@
 import { Action as ReduxAction } from "redux";
-import { IToDoTask } from "../../../../shared/data-types";
 import { Map } from "immutable";
+import { IToDoTask } from "../../../../shared/data-types";
 import { 
     Action, 
     AddToDoTaskAction, 
